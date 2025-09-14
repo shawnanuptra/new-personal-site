@@ -1,8 +1,8 @@
-import type { PageLoad } from './$types';
+import type { PageServerLoad } from './$types';
 
-export const load: PageLoad = async ({ params }) => {
+export const load: PageServerLoad = async ({ fetch }) => {
 
-    const response = await fetch('http://localhost:8080/ping')
+    const response = await fetch('api/ping')
     const { message: ping } = await response.json()
 
     return {
