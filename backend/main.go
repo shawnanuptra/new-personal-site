@@ -13,7 +13,7 @@ func main() {
 
 		// 2. Create a Go struct or map to hold your data.
 		// A map is a simple way to return key-value pairs.
-		response := map[string]string{"message": "pong"}
+		response := map[string]string{"message": "hello"}
 
 		// 3. Encode the Go data structure into a JSON string and write it to the response body.
 		json.NewEncoder(w).Encode(response)
