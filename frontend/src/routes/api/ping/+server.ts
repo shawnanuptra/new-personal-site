@@ -1,5 +1,6 @@
 import type { RequestHandler } from './$types';
+import { SERVER_HOST } from '$env/static/private';
 
 export const GET: RequestHandler = ({ params, url }) => {
-    return fetch('http://localhost:8080/ping');
+    return fetch(`${SERVER_HOST}/ping`);
 };
