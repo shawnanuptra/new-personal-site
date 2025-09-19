@@ -12,5 +12,7 @@ func main() {
 
 	router.HandleFunc("/ping", handlers.Ping)
 
+	router.HandleFunc("GET /projects", handlers.AllProjects)
+
 	log.Fatal(http.ListenAndServe(":8080", router))
 }
