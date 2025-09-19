@@ -4,4 +4,4 @@
     let { data }: PageProps = $props();
 </script>
 
-<h1>{data.ping}</h1>
+<h1>{data.projects}</h1>
