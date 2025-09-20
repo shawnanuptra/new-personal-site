@@ -31,6 +31,7 @@ func GetAllProjects() (projects []Project, err error) {
 	if err != nil {
 		return nil, err
 	}
+	defer res.Body.Close()
 
 	if res.StatusCode == 400 {
 		var sanityError SanityError[QueryError]
@@ -39,8 +40,6 @@ func GetAllProjects() (projects []Project, err error) {
 		}
 		return nil, &sanityError
 	}
-
-	defer res.Body.Close()
 
 	// decode response
 	var sanityResponse Response[Project]
