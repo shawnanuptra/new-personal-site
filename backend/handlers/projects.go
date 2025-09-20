@@ -7,7 +7,7 @@ import (
 	"github.com/shawnanuptra/new-personal-site/backend/sanity"
 )
 
-func AllProjects(w http.ResponseWriter, r *http.Request) {
+func GetAllProjects(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
 	projects, err := sanity.GetAllProjects()
@@ -30,7 +30,7 @@ func AllProjects(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(map[string][]sanity.Project{"projects": projects})
 }
 
-func OneProject(w http.ResponseWriter, r *http.Request) {
+func GetProject(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	slug := r.PathValue("project")
 

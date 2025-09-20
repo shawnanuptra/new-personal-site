@@ -27,8 +27,8 @@ func main() {
 
 	router.HandleFunc("/ping", handlers.Ping)
 
-	router.HandleFunc("GET /projects", handlers.AllProjects)
-	router.HandleFunc("GET /projects/{project}", handlers.OneProject)
+	router.HandleFunc("GET /projects", handlers.GetAllProjects)
+	router.HandleFunc("GET /projects/{project}", handlers.GetProject)
 
 	log.Fatal(http.ListenAndServe(":8080", router))
 }
