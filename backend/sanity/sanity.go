@@ -11,7 +11,7 @@ import (
 
 func QueryURL(query string) string {
 	baseURL := fmt.Sprintf(
-		"https://%s.api.sanity.io/%s/data/query/production",
+		os.Getenv("SANITY_BASE_URL"),
 		os.Getenv("SANITY_PROJECT_ID"),
 		os.Getenv("SANITY_API_VERSION"),
 	)
@@ -53,6 +53,7 @@ func GetAllProjects() (projects []Project, err error) {
 func GetProject(slug string) (project *Project, err error) {
 	query := fmt.Sprintf("*[_type=='blog' && slug.current=='%s'][0]{title, markdownContent, publishedAt, series, entry}", slug)
 
+	fmt.Println(QueryURL(query))
 	res, err := http.Get(QueryURL(query))
 	if err != nil {
 		return nil, err
