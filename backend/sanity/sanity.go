@@ -53,7 +53,6 @@ func GetAllProjects() (projects []Project, err error) {
 func GetProject(slug string) (project *Project, err error) {
 	query := fmt.Sprintf("*[_type=='blog' && slug.current=='%s'][0]{title, markdownContent, publishedAt, series, entry}", slug)
 
-	fmt.Println(QueryURL(query))
 	res, err := http.Get(QueryURL(query))
 	if err != nil {
 		return nil, err

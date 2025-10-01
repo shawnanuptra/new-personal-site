@@ -156,6 +156,7 @@ func TestGetAllProjects(t *testing.T) {
 				if _, ok := err.(*sanity.SanityError[sanity.QueryError]); ok {
 					t.Errorf("Expected error to be type SanityError[QueryError], instead error is:%v", err)
 				}
+
 			case "*[_type='projects']":
 				if err != nil {
 					t.Errorf("Expected error is nil, but received error:%v", err)
@@ -166,6 +167,112 @@ func TestGetAllProjects(t *testing.T) {
 
 				if projects[0].Title != "Hello World" {
 					t.Errorf("Expected project title to be 'Hello World', got:%v", projects[0].Title)
+				}
+			}
+		})
+	}
+}
+
+func TestGetOneProject(t *testing.T) {
+	tests := []struct {
+		name         string
+		slug         string
+		expectsError bool
+	}{
+		{
+			name:         "sanity Error",
+			slug:         "invalid-query",
+			expectsError: true,
+		},
+		{
+			name:         "decoding error",
+			slug:         "decoding-error",
+			expectsError: true,
+		},
+		{
+			name:         "correct",
+			slug:         "my-project",
+			expectsError: false,
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+				switch tt.slug {
+				// test returns 400
+				case "invalid-query":
+					w.WriteHeader(http.StatusBadRequest)
+					json.NewEncoder(w).Encode(sanity.SanityError[sanity.QueryError]{
+						Err: sanity.QueryError{
+							Description: "Sanity Error: Invalid Query",
+							Query:       tt.slug,
+							Type:        "queryParseError",
+						},
+					})
+
+				case "decoding-error":
+					w.WriteHeader(http.StatusOK)
+					// return broken json, so can trigger Decoding error
+					w.Write([]byte(`{"result":[`))
+
+				case "my-project":
+					w.WriteHeader(http.StatusOK)
+					json.NewEncoder(w).Encode(sanity.Response[sanity.Project]{
+						Ms:       12,
+						SyncTags: []string{"syncTag1", "syncTag2"},
+						Result:   sanity.Project{Title: "Hello World"},
+					})
+				}
+			}))
+			defer server.Close()
+
+			// setup
+			sanityProjectID := os.Getenv("SANITY_PROJECT_ID")
+			sanityAPIVersion := os.Getenv("SANITY_API_VERSION")
+			sanityBaseURL := os.Getenv("SANITY_BASE_URL")
+
+			os.Setenv("SANITY_PROJECT_ID", mockProjectID)
+			os.Setenv("SANITY_API_VERSION", mockAPIVersion)
+			os.Setenv("SANITY_BASE_URL", fmt.Sprintf("%s/data/query/production/%%s/%%s", server.URL))
+
+			// teardown
+			t.Cleanup(func() {
+				os.Setenv("SANITY_PROJECT_ID", sanityProjectID)
+				os.Setenv("SANITY_API_VERSION", sanityAPIVersion)
+				os.Setenv("SANITY_BASE_URL", sanityBaseURL)
+			})
+
+			project, err := sanity.GetProject(tt.slug)
+
+			switch tt.slug {
+			case "invalid-query":
+				if tt.expectsError && err == nil {
+					t.Errorf("Expected to receive error, but error is nil")
+				}
+
+				// check error type - if it's NOT QueryError, Fail
+				if _, ok := err.(*sanity.SanityError[sanity.QueryError]); !ok {
+					t.Errorf("Expected error to be type SanityError[QueryError], instead error is:%v", err)
+				}
+
+			case "decoding-error":
+				if tt.expectsError && err == nil {
+					t.Errorf("Expected to receive error, but error is nil")
+				}
+
+				// check error type - if it's QueryError, Fail
+				if _, ok := err.(*sanity.SanityError[sanity.QueryError]); ok {
+					t.Errorf("Expected error to be type SanityError[QueryError], instead error is:%v", err)
+				}
+
+			case "my-project":
+				if err != nil {
+					t.Errorf("Expected error is nil, but received error:%v", err)
+				}
+
+				if project.Title != "Hello World" {
+					t.Errorf("Expected project title to be 'Hello World', got:%v", project.Title)
 				}
 			}
 		})
