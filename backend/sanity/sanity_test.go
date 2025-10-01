@@ -32,20 +32,22 @@ func TestQueryURL(t *testing.T) {
 		},
 	}
 
-	// TODO: find out why the expected is not the same as the real, but functioning the same
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			// setup
 			sanityProjectID := os.Getenv("SANITY_PROJECT_ID")
 			sanityAPIVersion := os.Getenv("SANITY_API_VERSION")
+			sanityBaseURL := os.Getenv("SANITY_BASE_URL")
 
 			os.Setenv("SANITY_PROJECT_ID", mockProjectID)
 			os.Setenv("SANITY_API_VERSION", mockAPIVersion)
+			os.Setenv("SANITY_BASE_URL", "https://%s.api.sanity.io/%s/data/query/production")
 
 			// teardown
 			t.Cleanup(func() {
 				os.Setenv("SANITY_PROJECT_ID", sanityProjectID)
 				os.Setenv("SANITY_API_VERSION", sanityAPIVersion)
+				os.Setenv("SANITY_BASE_URL", sanityBaseURL)
 			})
 
 			// assert
@@ -107,12 +109,10 @@ func TestGetAllProjects(t *testing.T) {
 
 				case "*[_type='projects']":
 					w.WriteHeader(http.StatusOK)
-					json.NewEncoder(w).Encode(sanity.Response[sanity.Project]{
+					json.NewEncoder(w).Encode(sanity.Response[[]sanity.Project]{
 						Ms:       12,
 						SyncTags: []string{"syncTag1", "syncTag2"},
-						Result: sanity.Project{
-							Title: "Hello World",
-						},
+						Result:   []sanity.Project{{Title: "Hello World"}},
 					})
 				}
 			}))
@@ -125,8 +125,7 @@ func TestGetAllProjects(t *testing.T) {
 
 			os.Setenv("SANITY_PROJECT_ID", mockProjectID)
 			os.Setenv("SANITY_API_VERSION", mockAPIVersion)
-			// os.Setenv("SANITY_BASE_URL", fmt.Sprintf("%s/%s/%s", server.URL, "%s", "%s"))
-			os.Setenv("SANITY_BASE_URL", fmt.Sprintf("%s/data/query/production", server.URL))
+			os.Setenv("SANITY_BASE_URL", fmt.Sprintf("%s/data/query/production/%%s/%%s", server.URL))
 
 			// teardown
 			t.Cleanup(func() {
