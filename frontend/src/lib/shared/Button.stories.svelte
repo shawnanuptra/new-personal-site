@@ -20,4 +20,3 @@
 
 <Story name="Primary" args={{ label: 'Button', variant: 'primary' }} />
 <Story name="Secondary" args={{ label: 'Button', variant: 'secondary' }} />
-<Story name="Tertiary" args={{ label: 'Button', variant: 'tertiary' }} />
