@@ -1,10 +1,10 @@
 <script lang="ts">
 	interface propType {
 		label: string;
-		variant: "primary" | "secondary" | "tertiary";
+		variant: 'primary' | 'secondary' | 'tertiary';
 	}
 
-	let { label, variant = "primary" }: propType = $props();
+	let { label, variant = 'primary' }: propType = $props();
 </script>
 
 <button class="button button--{variant}">
