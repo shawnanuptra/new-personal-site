@@ -18,5 +18,15 @@
 	});
 </script>
 
-<Story name="Primary" args={{ label: 'Button', variant: 'primary' }} />
-<Story name="Secondary" args={{ label: 'Button', variant: 'secondary' }} />
+<Story name="Primary Button" args={{ label: 'Button', variant: 'primary' }} />
+<Story name="Secondary Button" args={{ label: 'Button', variant: 'secondary' }} />
+
+<Story
+	name="Primary Link Button"
+	args={{ label: 'Button', variant: 'primary', to: 'google.com' }}
+/>
+
+<Story
+	name="Secondary Link Button"
+	args={{ label: 'Button', variant: 'secondary', to: 'google.com' }}
+/>

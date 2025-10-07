@@ -3,23 +3,30 @@
 
 	interface ButtonProps extends HTMLButtonAttributes {
 		label: string;
+		to?: string;
 		variant: 'primary' | 'secondary';
 	}
 
-	let { label, variant = 'primary', ...rest }: ButtonProps = $props();
+	let { label, to, variant = 'primary', ...rest }: ButtonProps = $props();
 </script>
 
-<button class="button button--{variant}" {...rest}>
-	{label}
-</button>
+{#if !to}
+	<button class="button button--{variant}" {...rest}>
+		{label}
+	</button>
+{:else}
+	<a href={to} class="button button--{variant}">{label}</a>
+{/if}
 
 <style>
 	.button {
+		display: inline-block;
 		padding: 0.5rem 1rem;
 		border-radius: 0.5rem;
 		border: 1px solid transparent;
 		cursor: pointer;
 		transition: all 150ms ease-in-out;
+		text-decoration: none;
 	}
 
 	/* Variants */
