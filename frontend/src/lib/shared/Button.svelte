@@ -15,6 +15,7 @@
 		{label}
 	</button>
 {:else}
+	<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
 	<a href={to} class="button button--{variant}">{label}</a>
 {/if}
 
