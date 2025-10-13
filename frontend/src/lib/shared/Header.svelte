@@ -2,7 +2,7 @@
 import Button from '$lib/shared/Button.svelte';
 
 </script>
-<header>
+<header class="header">
 	<nav class="navbar">
 		<ul class="navbar__list">
 			<li class="navbar__list-item">
@@ -22,9 +22,17 @@ import Button from '$lib/shared/Button.svelte';
 </header>
 
 <style>
+.header {
+	margin: 2rem auto;
+	max-width: var(--max-width-xlg);
+	position: sticky;
+	top: 2rem;
+}
+
 .navbar {
-	border: 1px solid black;
-	padding: 1rem 2rem;
+	border: 1px solid var(--black);
+	background: var(--white);
+	padding: 1rem 1.5rem;
 	border-radius: var(--border-radius-md);
 	box-shadow:var(--box-shadow);
 }

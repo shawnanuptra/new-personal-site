@@ -41,7 +41,7 @@
 			background-color: var(--white);
 			color: var(--black);
 
-			transform: translateX(2px) translateY(-1px);
+			transform: translateX(2px) translateY(-2px);
 			box-shadow: var(--box-shadow);
 			outline: none;
 		}
@@ -58,7 +58,7 @@
 			background-color: var(--white);
 			color: var(--black);
 
-			transform: translateX(2px) translateY(-1px);
+			transform: translateX(2px) translateY(-2px);
 			box-shadow: var(--box-shadow);
 			outline: none;
 		}

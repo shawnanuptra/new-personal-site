@@ -11,4 +11,7 @@
 
 	/* Box Shadows */
 	--box-shadow: var(--black) -5px 5px 0px;
+
+	/* Max Width */
+	--max-width-xlg: 1192px;
 }

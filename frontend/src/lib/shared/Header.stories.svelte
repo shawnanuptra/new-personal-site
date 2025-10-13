@@ -8,12 +8,6 @@
 		title: 'Shared/Header',
 		component: Header,
 		tags: ['autodocs'],
-		argTypes: {
-			label: { control: 'text' },
-		},
-		args: {
-			onclick: fn(),
-		},
 	});
 </script>
 
