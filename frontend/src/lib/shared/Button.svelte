@@ -4,7 +4,7 @@
 	interface ButtonProps extends HTMLButtonAttributes {
 		label: string;
 		to?: string;
-		variant: 'primary' | 'secondary';
+		variant?: 'primary' | 'secondary';
 	}
 
 	let { label, to, variant = 'primary', ...rest }: ButtonProps = $props();
@@ -20,6 +20,7 @@
 
 <style>
 	.button {
+		font-size: 1rem;
 		display: inline-block;
 		padding: 0.5rem 1rem;
 		border-radius: 0.5rem;

@@ -1,4 +1,11 @@
 :root {
+
+	/* Colors */
 	--black: #202020;
 	--white: #ffffff;
+
+	/* Colors */
+	--border-radius-lg: 2rem;
+	--border-radius-md: 1rem;
+	--border-radius-sm: 0.5rem;
 }

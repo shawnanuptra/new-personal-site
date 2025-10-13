@@ -1,7 +1,8 @@
 <script lang="ts">
 	import type { PageProps } from './$types';
+	import Button from '$lib/shared/Button.svelte';
 
 	let { data }: PageProps = $props();
 </script>
 
-<h1>{JSON.stringify(data.projects)}</h1>
+<Button label="hello" variant="secondary" />
