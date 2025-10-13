@@ -26,6 +26,7 @@ import Button from '$lib/shared/Button.svelte';
 	border: 1px solid black;
 	padding: 1rem 2rem;
 	border-radius: var(--border-radius-md);
+	box-shadow:var(--box-shadow);
 }
 
 .navbar__list {
@@ -34,6 +35,7 @@ import Button from '$lib/shared/Button.svelte';
 	list-style: none;
 	padding: 0;
 	margin: 0;
+	gap: 1rem;
 }
 
 .navbar__list-item:first-of-type {

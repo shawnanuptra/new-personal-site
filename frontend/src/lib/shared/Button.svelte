@@ -23,7 +23,7 @@
 		font-size: 1rem;
 		display: inline-block;
 		padding: 0.5rem 1rem;
-		border-radius: 0.5rem;
+		border-radius: var(--border-radius-sm);
 		border: 1px solid transparent;
 		cursor: pointer;
 		transition: all 150ms ease-in-out;
@@ -41,8 +41,8 @@
 			background-color: var(--white);
 			color: var(--black);
 
-			transform: translateX(-1px) translateY(-1px);
-			box-shadow: var(--black) -5px 5px 0px;
+			transform: translateX(2px) translateY(-1px);
+			box-shadow: var(--box-shadow);
 			outline: none;
 		}
 	}
@@ -58,8 +58,8 @@
 			background-color: var(--white);
 			color: var(--black);
 
-			transform: translateX(-1px) translateY(-1px);
-			box-shadow: var(--black) -5px 5px 0px;
+			transform: translateX(2px) translateY(-1px);
+			box-shadow: var(--box-shadow);
 			outline: none;
 		}
 	}
