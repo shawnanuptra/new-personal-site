@@ -2,3 +2,9 @@
 
 @import '@acab/reset.css' layer(reset);
 @import './variables.css' layer(globals);
+
+@layer globals {
+	* {
+		font-family: 'DM Sans', sans-serif;
+	}
+}
