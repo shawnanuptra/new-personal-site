@@ -22,7 +22,7 @@ func QueryURL(query string) string {
 	return fmt.Sprintf("%s?%s", baseURL, params.Encode())
 }
 
-func GetAllProjects() (projects []Project, err error) {
+func GetAllProjects() (projects *[]Project, err error) {
 	query := "*[_type=='project'] | order(_updatedAt desc)[0...4] | {title, 'slug':slug.current, description, 'thumbnailUrl':thumbnail.asset->url}"
 
 	// ref:https://www.sanity.io/docs/http-reference/query
@@ -47,7 +47,7 @@ func GetAllProjects() (projects []Project, err error) {
 		return nil, err
 	}
 
-	return sanityResponse.Result, nil
+	return &sanityResponse.Result, nil
 }
 
 func GetProject(slug string) (project *Project, err error) {
