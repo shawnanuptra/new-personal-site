@@ -161,12 +161,12 @@ func TestGetAllProjects(t *testing.T) {
 				if err != nil {
 					t.Errorf("Expected error is nil, but received error:%v", err)
 				}
-				if len(projects) != 1 {
-					t.Errorf("Expected length of projects returned to be 1, got:%v", len(projects))
+				if len(*projects) != 1 {
+					t.Errorf("Expected length of projects returned to be 1, got:%v", len(*projects))
 				}
 
-				if projects[0].Title != "Hello World" {
-					t.Errorf("Expected project title to be 'Hello World', got:%v", projects[0].Title)
+				if (*projects)[0].Title != "Hello World" {
+					t.Errorf("Expected project title to be 'Hello World', got:%v", (*projects)[0].Title)
 				}
 			}
 		})
@@ -271,10 +271,9 @@ func TestGetOneProject(t *testing.T) {
 					t.Errorf("Expected error is nil, but received error:%v", err)
 				}
 
-				if project.Title != "Hello World" {
-					t.Errorf("Expected project title to be 'Hello World', got:%v", project.Title)
-				}
-			}
+				                if (*project).Title != "Hello World" {
+									t.Errorf("Expected project title to be 'Hello World', got:%v", (*project).Title)
+								}			}
 		})
 	}
 }

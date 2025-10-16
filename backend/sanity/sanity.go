@@ -7,7 +7,12 @@ import (
 	"net/http"
 	"net/url"
 	"os"
+	"time"
 )
+
+var client = &http.Client{
+	Timeout: 10 * time.Second,
+}
 
 func QueryURL(query string) string {
 	baseURL := fmt.Sprintf(
@@ -22,12 +27,8 @@ func QueryURL(query string) string {
 	return fmt.Sprintf("%s?%s", baseURL, params.Encode())
 }
 
-func GetAllProjects() (projects *[]Project, err error) {
-	query := "*[_type=='project'] | order(_updatedAt desc)[0...4] | {title, 'slug':slug.current, description, 'thumbnailUrl':thumbnail.asset->url}"
-
-	// ref:https://www.sanity.io/docs/http-reference/query
-	// hit the api: only return 200 or 400
-	res, err := http.Get(QueryURL(query))
+func executeQuery[T any](query string) (*T, error) {
+	res, err := client.Get(QueryURL(query))
 	if err != nil {
 		return nil, err
 	}
@@ -41,8 +42,7 @@ func GetAllProjects() (projects *[]Project, err error) {
 		return nil, &sanityError
 	}
 
-	// decode response
-	var sanityResponse Response[[]Project]
+	var sanityResponse Response[T]
 	if err := json.NewDecoder(res.Body).Decode(&sanityResponse); err != nil {
 		return nil, err
 	}
@@ -50,28 +50,12 @@ func GetAllProjects() (projects *[]Project, err error) {
 	return &sanityResponse.Result, nil
 }
 
-func GetProject(slug string) (project *Project, err error) {
+func GetAllProjects() (*[]Project, error) {
+	query := "*[_type=='project'] | order(_updatedAt desc)[0...4] | {title, 'slug':slug.current, description, 'thumbnailUrl':thumbnail.asset->url}"
+	return executeQuery[[]Project](query)
+}
+
+func GetProject(slug string) (*Project, error) {
 	query := fmt.Sprintf("*[_type=='blog' && slug.current=='%s'][0]{title, markdownContent, publishedAt, series, entry}", slug)
-
-	res, err := http.Get(QueryURL(query))
-	if err != nil {
-		return nil, err
-	}
-	defer res.Body.Close()
-
-	if res.StatusCode == 400 {
-		var sanityError SanityError[QueryError]
-		if err := json.NewDecoder(res.Body).Decode(&sanityError); err != nil {
-			return nil, err
-		}
-		return nil, &sanityError
-	}
-
-	// decode response
-	var sanityResponse Response[Project]
-	if err := json.NewDecoder(res.Body).Decode(&sanityResponse); err != nil {
-		return nil, err
-	}
-
-	return &sanityResponse.Result, nil
+	return executeQuery[Project](query)
 }
