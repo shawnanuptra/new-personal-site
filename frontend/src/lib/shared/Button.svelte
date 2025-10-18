@@ -21,7 +21,6 @@
 
 <style>
 	.button {
-		font-size: 1rem;
 		display: inline-block;
 		padding: 0.5rem 1rem;
 		border-radius: var(--border-radius-sm);

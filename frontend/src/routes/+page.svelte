@@ -18,6 +18,5 @@
 		border: 1px solid black;
 		display: flex;
 		max-width: var(--max-width-xlg);
-		height: 100vh;
 	}
 </style>

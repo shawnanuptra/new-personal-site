@@ -1,0 +1,5 @@
+@layer reset, globals, component, overrides;
+
+@import '@acab/reset.css' layer(reset);
+@import './variables.css' layer(globals);
+@import './globals.css' layer(globals);
