@@ -32,7 +32,7 @@
 	.navbar {
 		border: 1px solid var(--black);
 		background: var(--white);
-		padding: 1rem 1.5rem;
+		padding: 1rem 1.25rem;
 		border-radius: var(--border-radius-md);
 		box-shadow: var(--box-shadow);
 	}
