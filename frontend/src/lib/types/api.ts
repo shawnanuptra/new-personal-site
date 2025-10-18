@@ -1,5 +1,6 @@
 export interface ApiResponse<T> {
 	data: T;
+	error?: any;
 }
 
 export interface Projects {

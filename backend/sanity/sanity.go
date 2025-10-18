@@ -50,8 +50,8 @@ func executeQuery[T any](query string) (*T, error) {
 	return &sanityResponse.Result, nil
 }
 
-func GetAllProjects() (*[]Project, error) {
-	query := "*[_type=='project'] | order(_updatedAt desc)[0...4] | {title, 'slug':slug.current, description, 'thumbnailUrl':thumbnail.asset->url}"
+func GetProjects(count int) (*[]Project, error) {
+	query := fmt.Sprintf("*[_type=='project'] | order(_updatedAt desc)[0...%v] | {title, 'slug':slug.current, description, 'thumbnailUrl':thumbnail.asset->url}", count)
 	return executeQuery[[]Project](query)
 }
 
@@ -59,3 +59,4 @@ func GetProject(slug string) (*Project, error) {
 	query := fmt.Sprintf("*[_type=='blog' && slug.current=='%s'][0]{title, markdownContent, publishedAt, series, entry}", slug)
 	return executeQuery[Project](query)
 }
+

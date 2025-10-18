@@ -134,7 +134,7 @@ func TestGetAllProjects(t *testing.T) {
 				os.Setenv("SANITY_BASE_URL", sanityBaseURL)
 			})
 
-			projects, err := sanity.GetAllProjects()
+			projects, err := sanity.GetProjects(1)
 
 			switch tt.query {
 			case "invalid-query":
@@ -271,9 +271,10 @@ func TestGetOneProject(t *testing.T) {
 					t.Errorf("Expected error is nil, but received error:%v", err)
 				}
 
-				                if (*project).Title != "Hello World" {
-									t.Errorf("Expected project title to be 'Hello World', got:%v", (*project).Title)
-								}			}
+				if (*project).Title != "Hello World" {
+					t.Errorf("Expected project title to be 'Hello World', got:%v", (*project).Title)
+				}
+			}
 		})
 	}
 }

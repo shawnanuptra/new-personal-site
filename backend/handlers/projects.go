@@ -2,12 +2,26 @@ package handlers
 
 import (
 	"net/http"
+	"strconv"
 
 	"github.com/shawnanuptra/new-personal-site/backend/sanity"
 )
 
-func GetAllProjects(w http.ResponseWriter, r *http.Request) {
-	projects, err := sanity.GetAllProjects()
+func GetProjects(w http.ResponseWriter, r *http.Request) {
+	countStr := r.URL.Query().Get("count")
+
+	count := 4 // defaults to 4
+	if countStr != "" {
+		c, err := strconv.Atoi(countStr)
+		if err != nil {
+			writeJSONError(w, http.StatusBadRequest, "Count should be an integer")
+			return
+		}
+
+		count = c
+	}
+
+	projects, err := sanity.GetProjects(count)
 	if err != nil {
 		HandleSanityError(w, err)
 		return
