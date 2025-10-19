@@ -1,4 +1,6 @@
 <script lang="ts">
+	import Card from '$lib/shared/Card.svelte';
+
 	const { data } = $props();
 	const { projects } = data;
 </script>
@@ -6,16 +8,20 @@
 <main>
 	<section>
 		<h2>Projects</h2>
-		{#each projects as project (project.slug)}
-			<p>{project.title}</p>
-		{/each}
+		<div class="cards">
+			{#each projects as project (project.slug)}
+				<Card {project} />
+			{/each}
+		</div>
 	</section>
 
 	<section>
 		<h2>Blogs</h2>
-		{#each projects as project (project.slug)}
-			<p>{project.title}</p>
-		{/each}
+		<div class="cards">
+			{#each projects as project (project.slug)}
+				<p>{project.title}</p>
+			{/each}
+		</div>
 	</section>
 </main>
 
@@ -38,5 +44,11 @@
 		border-radius: var(--border-radius-md);
 		background-color: var(--white);
 		box-shadow: var(--box-shadow);
+	}
+
+	.cards {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 2rem;
 	}
 </style>
