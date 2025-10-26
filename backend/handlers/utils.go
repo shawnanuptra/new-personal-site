@@ -2,7 +2,9 @@ package handlers
 
 import (
 	"encoding/json"
+	"errors"
 	"net/http"
+	"strconv"
 
 	"github.com/shawnanuptra/new-personal-site/backend/sanity"
 )
@@ -38,4 +40,20 @@ func HandleSanityError(w http.ResponseWriter, err error) {
 	}
 
 	writeJSONError(w, http.StatusInternalServerError, map[string]string{"error": err.Error()})
+}
+
+func getCount(r *http.Request) (count int, err error) {
+	countStr := r.URL.Query().Get("count")
+
+	count = 4 // defaults to 4
+	if countStr != "" {
+		c, err := strconv.Atoi(countStr)
+		if err != nil {
+			return 0, errors.New("count parameter should be an int")
+		}
+
+		count = c
+	}
+
+	return count, nil
 }
