@@ -45,7 +45,7 @@
 		flex-shrink: 1;
 		width: 100%;
 		padding: 2rem;
-		border: 2px solid var(--black);
+		border: 3px solid var(--black);
 		box-shadow: var(--box-shadow);
 		border-radius: var(--border-radius-md);
 		background-color: var(--white);

@@ -54,7 +54,7 @@
 		display: inline-block;
 		transition: all 150ms 150ms ease-in-out;
 		border: 2px solid transparent;
-		border-radius: var(--border-radius-md);
+		border-radius: var(--border-radius-sm);
 		color: var(--black);
 		margin: auto 0;
 		padding: 0.25rem 0.5rem;
@@ -63,7 +63,7 @@
 			border: 2px solid var(--black);
 			text-decoration-style: solid;
 
-			box-shadow: var(--box-shadow);
+			box-shadow: var(--box-shadow-sm);
 		}
 	}
 
