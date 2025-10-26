@@ -39,23 +39,23 @@ func GetBlogs(w http.ResponseWriter, r *http.Request) {
 		writeJSONError(w, http.StatusBadRequest, err.Error())
 	}
 
-	projects, err := sanity.GetProjects(count)
+	blogs, err := sanity.GetBlogs(count)
 	if err != nil {
 		HandleSanityError(w, err)
 		return
 	}
 
-	writeJSON(w, http.StatusOK, map[string][]sanity.Project{"projects": *projects})
+	writeJSON(w, http.StatusOK, map[string][]sanity.Blog{"blogs": *blogs})
 }
 
 func GetBlog(w http.ResponseWriter, r *http.Request) {
-	slug := r.PathValue("project")
+	slug := r.PathValue("blog")
 
-	project, err := sanity.GetProject(slug)
+	blog, err := sanity.GetBlog(slug)
 	if err != nil {
 		HandleSanityError(w, err)
 		return
 	}
 
-	writeJSON(w, http.StatusOK, map[string]sanity.Project{"project": *project})
+	writeJSON(w, http.StatusOK, map[string]sanity.Blog{"blog": *blog})
 }

@@ -56,7 +56,16 @@ func GetProjects(count int) (*[]Project, error) {
 }
 
 func GetProject(slug string) (*Project, error) {
-	query := fmt.Sprintf("*[_type=='blog' && slug.current=='%s'][0]{title, markdownContent, publishedAt, series, entry}", slug)
+	query := fmt.Sprintf("*[_type=='project' && slug.current=='%s'][0]{title, markdownContent, publishedAt, series, entry}", slug)
 	return executeQuery[Project](query)
 }
 
+func GetBlogs(count int) (*[]Blog, error) {
+	query := fmt.Sprintf("*[_type=='blog'] | order(_updatedAt desc)[0...%v] | {title, 'slug':slug.current, description}", count)
+	return executeQuery[[]Blog](query)
+}
+
+func GetBlog(slug string) (*Blog, error) {
+	query := fmt.Sprintf("*[_type=='blog' && slug.current=='%s'][0]{title, markdownContent, publishedAt, series, entry}", slug)
+	return executeQuery[Blog](query)
+}

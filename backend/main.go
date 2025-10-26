@@ -30,5 +30,8 @@ func main() {
 	router.HandleFunc("GET /projects", handlers.GetProjects)
 	router.HandleFunc("GET /projects/{project}", handlers.GetProject)
 
+	router.HandleFunc("GET /blogs", handlers.GetBlogs)
+	router.HandleFunc("GET /blogs/{blog}", handlers.GetBlog)
+
 	log.Fatal(http.ListenAndServe(":8080", router))
 }

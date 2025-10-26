@@ -1,19 +1,31 @@
-export interface ApiResponse<T> {
+export type ApiResponse<T> = {
 	data: T;
 	error?: any;
 }
 
-export interface Projects {
+export type Projects = {
 	projects: Project[];
 }
 
-export interface Project {
+export type Project = {
 	title: string;
 	slug: string;
 	description: string;
 	thumbnailUrl: string;
 	publishedAt: string;
-	series: string;
-	entry: number;
+	content: string;
+}
+
+export type Blogs = {
+	blogs: Blog[]
+}
+
+export type Blog = {
+	title: string;
+	slug: string;
+	description: string;
+	publishedAt: string;
+	series?: string;
+	entry?: number;
 	content: string;
 }

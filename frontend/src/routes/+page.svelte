@@ -3,7 +3,7 @@
 	import Card from '$lib/shared/Card.svelte';
 
 	const { data } = $props();
-	const { projects } = data;
+	const { projects, blogs } = data;
 </script>
 
 <main>
@@ -23,8 +23,8 @@
 	<section>
 		<h2>Blogs</h2>
 		<div class="cards">
-			{#each projects as project (project.slug)}
-				<p>{project.title}</p>
+			{#each blogs as blog (blog.slug)}
+				<p>{blog.title}</p>
 			{/each}
 		</div>
 	</section>
