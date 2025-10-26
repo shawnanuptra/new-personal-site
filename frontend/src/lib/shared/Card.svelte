@@ -51,22 +51,7 @@
 
 	.card-title-wrapper {
 		order: 2;
-		display: inline-block;
-		transition: all 150ms 150ms ease-in-out;
-		border: 2px solid transparent;
-		border-radius: var(--border-radius-sm);
-		color: var(--black);
-		margin: auto 0;
-		padding: 0.25rem 0.5rem;
-
-		&:has(> .card-title:hover) {
-			border: 2px solid var(--black);
-			text-decoration-style: solid;
-
-			box-shadow: var(--box-shadow-sm);
-		}
 	}
-
 	.card-title {
 		font-size: 2.5rem;
 		font-weight: bold;
@@ -83,13 +68,13 @@
 		}
 
 		margin: 1rem 0;
-		display: inline;
 
 		&:hover,
 		&:focus,
 		&:focus-visible {
 			outline: none;
 			box-shadow: none;
+			background: linear-gradient(to bottom, var(--white) 0%, var(--white) 63%, #fdff32 63%);
 		}
 	}
 </style>
