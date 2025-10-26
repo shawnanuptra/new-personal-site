@@ -10,7 +10,8 @@
 		tags: ['autodocs'],
 		argTypes: {
 			label: { control: 'text' },
-			variant: { options: ['primary', 'secondary', 'tertiary'] },
+			variant: { options: ['primary', 'secondary'] },
+			size: { options: ['small', 'large'] },
 		},
 		args: {
 			onclick: fn(),
@@ -26,4 +27,20 @@
 <Story
 	name="Secondary Link Button"
 	args={{ label: 'Button', variant: 'secondary', to: 'google.com' }}
+/>
+
+<Story name="Large Primary Button" args={{ label: 'Button', size: 'large' }} />
+<Story
+	name="Large Secondary Button"
+	args={{ label: 'Button', variant: 'secondary', size: 'large' }}
+/>
+
+<Story
+	name="Large Primary Link Button"
+	args={{ label: 'Button', to: 'google.com', size: 'large' }}
+/>
+
+<Story
+	name="Large Secondary Link Button"
+	args={{ label: 'Button', variant: 'secondary', to: 'google.com', size: 'large' }}
 />

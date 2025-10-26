@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Button from '$lib/shared/Button.svelte';
 	import Card from '$lib/shared/Card.svelte';
 
 	const { data } = $props();
@@ -12,6 +13,10 @@
 			{#each projects as project (project.slug)}
 				<Card {project} />
 			{/each}
+		</div>
+
+		<div class="section-cta">
+			<Button label="See more projects &#8594;" to="/projects" size="large" />
 		</div>
 	</section>
 
@@ -57,5 +62,9 @@
 		gap: 1.5rem;
 
 		grid-template-rows: auto 1fr auto;
+	}
+
+	.section-cta {
+		margin: 3rem auto;
 	}
 </style>
