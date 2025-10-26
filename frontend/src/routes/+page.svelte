@@ -44,6 +44,7 @@
 		border-radius: var(--border-radius-md);
 		background-color: var(--white);
 		box-shadow: var(--box-shadow);
+		gap: 1rem;
 	}
 
 	.cards {

@@ -52,7 +52,7 @@
 	.card-title-wrapper {
 		order: 2;
 		display: inline-block;
-		transition: all 150ms 300ms ease-in-out;
+		transition: all 150ms 150ms ease-in-out;
 		border: 2px solid transparent;
 		border-radius: var(--border-radius-md);
 		color: var(--black);
