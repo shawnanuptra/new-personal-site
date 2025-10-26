@@ -1,4 +1,5 @@
 <script lang="ts">
+	import BlogCard from '$lib/shared/BlogCard.svelte';
 	import Button from '$lib/shared/Button.svelte';
 	import Card from '$lib/shared/Card.svelte';
 
@@ -24,8 +25,12 @@
 		<h2>Blogs</h2>
 		<div class="cards">
 			{#each blogs as blog (blog.slug)}
-				<p>{blog.title}</p>
+				<BlogCard {blog} />
 			{/each}
+		</div>
+
+		<div class="section-cta">
+			<Button label="See more blogs &#8594;" to="/blogs" size="large" />
 		</div>
 	</section>
 </main>
