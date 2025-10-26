@@ -24,6 +24,7 @@
 		grid-row: 3 span;
 		grid-template-rows: subgrid;
 		gap: 1rem;
+		background-color: var(--white);
 
 		border: 2px dashed var(--black);
 		border-radius: var(--border-radius-md);
