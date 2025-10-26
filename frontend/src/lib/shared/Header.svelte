@@ -27,6 +27,7 @@
 		max-width: var(--max-width-xlg);
 		position: sticky;
 		top: 2rem;
+		z-index: 999;
 	}
 
 	.navbar {
