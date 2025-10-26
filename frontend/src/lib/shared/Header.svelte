@@ -31,7 +31,9 @@
 	}
 
 	.navbar {
-		border: 1px solid var(--black);
+		margin: 0 auto;
+		width: 70%;
+		border: 2px solid var(--black);
 		background: var(--white);
 		padding: 1rem 1.25rem;
 		border-radius: var(--border-radius-md);

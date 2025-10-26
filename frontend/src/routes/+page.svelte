@@ -40,7 +40,8 @@
 		flex-shrink: 1;
 		width: 100%;
 		padding: 2rem;
-		border: 3px dashed black;
+		border: 2px solid black;
+		box-shadow: var(--box-shadow);
 		border-radius: var(--border-radius-md);
 		background-color: var(--white);
 		gap: 1.5rem;
