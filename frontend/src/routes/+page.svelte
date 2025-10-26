@@ -9,7 +9,7 @@
 
 <main>
 	<section>
-		<h2>Projects</h2>
+		<h2 id="projects">Projects</h2>
 		<div class="cards">
 			{#each projects as project (project.slug)}
 				<Card {project} />
@@ -22,8 +22,8 @@
 	</section>
 
 	<section>
-		<h2>Blogs</h2>
-		<div class="cards">
+		<h2 id="blogs">Blogs</h2>
+		<div class="blog-cards">
 			{#each blogs as blog (blog.slug)}
 				<BlogCard {blog} />
 			{/each}
@@ -58,6 +58,7 @@
 
 		h2 {
 			font-size: 3rem;
+			scroll-margin-top: 10rem;
 		}
 	}
 
@@ -71,5 +72,11 @@
 
 	.section-cta {
 		margin: 3rem auto;
+	}
+
+	.blog-cards {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1.5rem;
 	}
 </style>
