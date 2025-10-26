@@ -39,12 +39,15 @@
 		flex-direction: column;
 		flex-shrink: 1;
 		width: 100%;
-		padding: 1rem 1.25rem;
-		border: 1px solid black;
+		padding: 2rem;
+		border: 3px dashed black;
 		border-radius: var(--border-radius-md);
 		background-color: var(--white);
-		box-shadow: var(--box-shadow);
-		gap: 1rem;
+		gap: 1.5rem;
+
+		h2 {
+			font-size: 3rem;
+		}
 	}
 
 	.cards {
