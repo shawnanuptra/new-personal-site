@@ -14,6 +14,7 @@ export type Project = {
 	thumbnailUrl: string;
 	publishedAt: string;
 	content: string;
+	markdownContent: string;
 }
 
 export type Blogs = {
@@ -27,5 +28,5 @@ export type Blog = {
 	publishedAt: string;
 	series?: string;
 	entry?: number;
-	content: string;
+	markdownContent: string;
 }

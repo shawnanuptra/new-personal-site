@@ -6,7 +6,7 @@
 
 <article class="card">
 	<div class="card-title-wrapper">
-		<a class="card-title" href={'project/' + project.slug}>{project.title}</a>
+		<a class="card-title" href={'projects/' + project.slug}>{project.title}</a>
 	</div>
 	<p class="card-content">{project.description}</p>
 	<img
