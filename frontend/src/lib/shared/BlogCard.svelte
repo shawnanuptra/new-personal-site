@@ -14,15 +14,14 @@
 <style>
 	.card {
 		position: relative;
-		display: grid;
-		grid-row: 3 span;
-		grid-template-rows: subgrid;
+		display: flex;
+		flex-direction: column;
 		gap: 1rem;
 		background-color: var(--white);
 
 		border: 2px dashed var(--black);
 		border-radius: var(--border-radius-md);
-		padding: 2rem 1rem;
+		padding: 2rem;
 		transition: all 150ms ease-in-out;
 
 		&:hover,
@@ -35,7 +34,6 @@
 
 	.card-content {
 		order: 3;
-		padding: 0 0.5rem;
 	}
 
 	.card-title-wrapper {
