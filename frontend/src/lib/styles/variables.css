@@ -8,6 +8,7 @@
 	--border-radius-lg: 2rem;
 	--border-radius-md: 1rem;
 	--border-radius-sm: 0.5rem;
+	--border-radius-xs: 0.2rem;
 
 	/* Box Shadows */
 	--box-shadow-sm: var(--black) -3px 3px 0px;
