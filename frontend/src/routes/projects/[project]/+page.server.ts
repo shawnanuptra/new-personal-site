@@ -1,6 +1,5 @@
 import type { ApiResponse, ProjectResponse } from "$lib/types/api";
 import type { PageServerLoad } from "./$types";
-import type { ApiResponse, Project } from "$lib/types/api";
 import { error as errorRedirect } from '@sveltejs/kit';
 
 export const load: PageServerLoad = async ({ fetch, params }) => {
