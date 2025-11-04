@@ -38,13 +38,14 @@
 			border-radius: var(--border-radius-md);
 		}
 
-		:global(code) {
+		:global(p > code) {
 			font-family: 'JetBrains Mono', monospace;
 			font-optical-sizing: auto;
 			font-weight: 400;
 			font-style: italic;
 			background-color: #2d353b;
 			padding: 0.25ch 0.5ch;
+			word-break: break-word;
 			color: #d3c6aa;
 			border-radius: var(--border-radius-xs);
 		}
