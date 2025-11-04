@@ -1,4 +1,4 @@
-import type { ApiResponse, Blog, Blogs } from "$lib/types/api";
+import type { ApiResponse, Blog, BlogsResponse } from "$lib/types/api";
 import type { PageServerLoad } from "./$types";
 import { error as errorRedirect } from '@sveltejs/kit'
 
