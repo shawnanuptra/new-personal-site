@@ -36,7 +36,7 @@
 				slug: 'project-title',
 				description: "This is the card's description",
 				publishedAt: '2025-08-03',
-				content: "This shouldn't be here!",
+				markdownContent: "This shouldn't be here!",
 			}}
 		/>
 		<BlogCard
@@ -48,7 +48,7 @@
 				description:
 					"This is the card's descriptionThis shouldn't be here!This shouldn't be here!This shouldn't be here!This shouldn't be here!This shouldn't be here!This shouldn't be here!This shouldn't be here!",
 				publishedAt: '2025-08-03',
-				content: "This shouldn't be here!",
+				markdownContent: "This shouldn't be here!",
 			}}
 		/>
 	</div>

@@ -3,8 +3,12 @@ export type ApiResponse<T> = {
 	error?: any;
 }
 
-export type Projects = {
+export type ProjectsResponse = {
 	projects: Project[];
+}
+
+export type ProjectResponse = {
+	project: Project;
 }
 
 export type Project = {
@@ -17,8 +21,12 @@ export type Project = {
 	markdownContent: string;
 }
 
-export type Blogs = {
-	blogs: Blog[]
+export type BlogsResponse = {
+	blogs: Blog[];
+}
+
+export type BlogResponse = {
+	blog: Blog;
 }
 
 export type Blog = {

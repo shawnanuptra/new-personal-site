@@ -1,4 +1,4 @@
-import type { ApiResponse, Blogs, Projects } from '$lib/types/api';
+import type { ApiResponse, BlogsResponse, ProjectsResponse } from '$lib/types/api';
 import type { PageServerLoad } from './$types';
 import { error as errorRedirect } from '@sveltejs/kit'
 
@@ -13,8 +13,8 @@ export const load: PageServerLoad = async ({ fetch }) => {
 		blogsResponse.json(),
 	])
 
-	const { data: projectsData, error: projectsErr }: ApiResponse<Projects> = projectsJson;
-	const { data: blogsData, error: blogsErr }: ApiResponse<Blogs> = blogsJson;
+	const { data: projectsData, error: projectsErr }: ApiResponse<ProjectsResponse> = projectsJson;
+	const { data: blogsData, error: blogsErr }: ApiResponse<BlogsResponse> = blogsJson;
 
 	if (!projectsErr && !blogsErr) {
 		const { projects } = projectsData;
