@@ -39,7 +39,7 @@
 	main {
 		display: flex;
 		flex-direction: column;
-		gap: 2rem;
+		gap: 3rem;
 		margin: 0 auto;
 		max-width: var(--max-width-xlg);
 	}
