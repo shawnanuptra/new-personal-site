@@ -12,3 +12,9 @@
 
 <Header />
 {@render children?.()}
+
+<style>
+	:global(body) {
+		padding-bottom: 10rem;
+	}
+</style>
