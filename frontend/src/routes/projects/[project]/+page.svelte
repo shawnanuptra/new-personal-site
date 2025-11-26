@@ -43,6 +43,7 @@
 			font-optical-sizing: auto;
 			font-weight: 400;
 			font-style: italic;
+			font-size: 0.9rem;
 			background-color: #2d353b;
 			padding: 0.25ch 0.5ch;
 			word-break: break-word;
